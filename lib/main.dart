@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       title: 'MS Haine',
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.blueGrey,
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.amber,
       ),
       home: const MyHomePage(title: 'MS Haine'),
       debugShowCheckedModeBanner: false,
