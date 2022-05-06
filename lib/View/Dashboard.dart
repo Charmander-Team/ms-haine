@@ -25,15 +25,18 @@ class DashboardState extends State<Dashboard>{
             leading: CustomHelper().leadingCustomAppBar(),
             title : const Text("Mon DashBoard"),
             actions: [
-                IconButton(onPressed: (){
-                  FirestoreHelper().deconnexion();
-                  Navigator.push(context, MaterialPageRoute(
-                      builder: (context){
-                        return const MyHomePage(title: "");
-                      }
-                  ));
-                },
-                    icon: const Icon(Icons.exit_to_app ,color: Colors.red,)
+                TextButton.icon(
+                  onPressed: () {
+                      FirestoreHelper().deconnexion();
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context){
+                            return const MyHomePage(title: "");
+                          }
+                      ));
+                  },
+                  style: TextButton.styleFrom(primary: Colors.white,),
+                  icon: const Icon(FontAwesomeIcons.arrowCircleRight),
+                  label: const Text("Deconnexion"),
                 )
             ],
         ),
