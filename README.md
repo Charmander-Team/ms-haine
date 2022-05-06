@@ -6,4 +6,5 @@
 - Ajout d'une pop up si erreur à la connexion/inscription
 - Ajout et utilisation de la librairie [awesome_icons](https://pub.dev/packages/awesome_icons)
 - Factorisation d'une partie de l'appBar dans `Fonctions/CustomHelper.dart`
+- Mise en place des "assets"
 - Ajout d'un .gitignore pour un repo propre
