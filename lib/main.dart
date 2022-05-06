@@ -8,8 +8,18 @@ import 'library/lib.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-
+  if (defaultTargetPlatform == TargetPlatform.iOS || defaultTargetPlatform == TargetPlatform.android) {
+    await Firebase.initializeApp();
+  } else {
+    await Firebase.initializeApp(
+        options: const FirebaseOptions(
+          apiKey: "AIzaSyD3fTPz7G4fliw6kBgeqLNwfWTQL8S4sgc",
+          projectId: "musicvitkov-e3832",
+          messagingSenderId: "137037393358",
+          appId: "1:137037393358:web:8b33bac0ffe84579cf0f9f",
+          storageBucket: "musicvitkov-e3832.appspot.com",
+        ));
+  }
   runApp(const MyApp());
 }
 
