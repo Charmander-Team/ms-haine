@@ -32,9 +32,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'MS Haine',
       theme: ThemeData(
+        scaffoldBackgroundColor: Colors.blueGrey,
         primarySwatch: Colors.green,
       ),
-
       home: const MyHomePage(title: 'MS Haine'),
       debugShowCheckedModeBanner: false,
     );
