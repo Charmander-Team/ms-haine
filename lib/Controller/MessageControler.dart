@@ -8,7 +8,8 @@ import 'package:ms_haine/model/MyProfil.dart';
 class MessageController extends StatefulWidget{
   MyProfil id;
   MyProfil idPartner;
-  MessageController(@required this.id,@required this.idPartner);
+  MessageController(this.id,this.idPartner);
+  // MessageController(@required this.id,@required this.idPartner);
   @override
   State<StatefulWidget> createState() {
     return MessageControllerState();
@@ -165,7 +166,7 @@ class ZoneTextState extends State<ZoneText>{
   }
 
   _sendMessage(){
-    //envoie message dans rebase
+    //envoie message dans firebase
     print(_textEditingController.text);
   }
 

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:ms_haine/Controller/MessageControler.dart';
 import 'package:ms_haine/Fonctions/FirestoreHelper.dart';
 import 'package:ms_haine/library/constant.dart';
 import 'package:ms_haine/model/MyProfil.dart';
@@ -54,6 +55,13 @@ class AllUsersState extends State<AllUsers> {
                       ),
                       onTap: () {
                         print("coucou");
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                            return Scaffold(
+                              body: ZoneText(users,Myprofil),
+                              // body: MessageController(users,Myprofil),
+                          ); 
+                        }));
                       },
                     );
                   }
