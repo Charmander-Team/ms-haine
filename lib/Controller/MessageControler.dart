@@ -1,20 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'package:ms_haine/Fonctions/FirestoreHelper.dart';
 import 'package:ms_haine/model/Message.dart';
 import 'package:ms_haine/model/MyProfil.dart';
 
-class MessageController extends StatefulWidget{
+class MessageController extends StatefulWidget {
+
   MyProfil id;
   MyProfil idPartner;
-  MessageController(this.id,this.idPartner);
-  // MessageController(@required this.id,@required this.idPartner);
+
+  MessageController(@required this.id, @required this.idPartner);
+
   @override
   State<StatefulWidget> createState() {
     return MessageControllerState();
   }
-}
+} // Fin de MessageController
 
 class MessageControllerState extends State<MessageController> {
 
@@ -36,18 +37,12 @@ class MessageControllerState extends State<MessageController> {
             return const CircularProgressIndicator();
           } else {
             List<DocumentSnapshot>documents = snapshot.data!.docs;
-
-
             return ListView.builder(
               itemCount: documents.length,
               itemBuilder: (BuildContext ctx,int index) {
                 Message discussion = Message(documents[index]);
-                if ((discussion.from == widget.id.uid &&
-                    discussion.to == widget.idPartner.uid) ||
-                    (discussion.from == widget.idPartner.uid &&
-                        discussion.to == widget.id.uid)) {
-                  return messageBubble(
-                    widget.id.uid, widget.idPartner, discussion,);
+                if ((discussion.from == widget.id.uid && discussion.to == widget.idPartner.uid) || (discussion.from == widget.idPartner.uid && discussion.to == widget.id.uid)) {
+                  return messageBubble(widget.id.uid, widget.idPartner, discussion,);
                 } else {
                   return Container();
                 }
@@ -57,9 +52,8 @@ class MessageControllerState extends State<MessageController> {
         } // Fin de builder
     );
   }
-}
 
-
+} // Fin de MessageControllerState
 
 class messageBubble extends StatelessWidget {
 
@@ -67,21 +61,20 @@ class messageBubble extends StatelessWidget {
   MyProfil partenaire;String monId;
   Animation? animation;
 
-  messageBubble(@required this.monId,@required this.partenaire,@required this.message,{this.animation});
+  messageBubble(@required this.monId, @required this.partenaire, @required this.message, {this.animation});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.all(10),
       child: Row(
-        children: widgetBubble(message.from==monId),
+        children: widgetBubble(message.from == monId),
       ),
     );
   }
 
   List<Widget> widgetBubble(bool moi) {
-    CrossAxisAlignment alignment =
-        (moi) ? CrossAxisAlignment.end : CrossAxisAlignment.start;
+    CrossAxisAlignment alignment = (moi) ? CrossAxisAlignment.end : CrossAxisAlignment.start;
     Color colorBubble = (moi) ? Colors.green : Colors.blue;
     Color textcolor = Colors.white;
     return <Widget>[
@@ -106,8 +99,8 @@ class messageBubble extends StatelessWidget {
       )
     ];
   } // Fin de LIST
-}
 
+} // Fin de messageBubble
 
 class ZoneText extends StatefulWidget {
 
@@ -121,13 +114,11 @@ class ZoneText extends StatefulWidget {
     return ZoneTextState();
   }
 
-}
-
+} // Fin de messageBubble
 
 TextEditingController _textEditingController = TextEditingController();
 
 class ZoneTextState extends State<ZoneText>{
-
 
   @override
   Widget build(BuildContext context) {
@@ -150,7 +141,7 @@ class ZoneTextState extends State<ZoneText>{
   }
 
   _sendBouttonpressed() {
-    if(_textEditingController != ""){
+    if (_textEditingController != "") {
       String text=_textEditingController.text;
       print('enregistrement');
       FirestoreHelper().sendMessage(text, widget.partenaire,widget.moi);
@@ -165,9 +156,9 @@ class ZoneTextState extends State<ZoneText>{
     }
   }
 
-  _sendMessage(){
+  _sendMessage() {
     //envoie message dans firebase
     print(_textEditingController.text);
   }
 
-}
+} // Fin de ZoneTextState

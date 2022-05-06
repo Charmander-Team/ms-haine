@@ -7,17 +7,17 @@ import 'package:ms_haine/modelView/ImageRond.dart';
 import 'package:flutter/material.dart';
 
 class AllUsers extends StatefulWidget {
+
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return AllUsersState();
   }
 }
 
 class AllUsersState extends State<AllUsers> {
+
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return bodyPage();
   }
 
@@ -28,9 +28,7 @@ class AllUsersState extends State<AllUsers> {
           // Pas d'information dans la collection Users
           if (!snapshot.hasData) {
             return const CircularProgressIndicator();
-          }
-          // Information dans la collection Users
-          else {
+          } else {
             List documents = snapshot.data!.docs;
             return ListView.builder(
                 itemCount: documents.length,
@@ -58,8 +56,8 @@ class AllUsersState extends State<AllUsers> {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                             return Scaffold(
-                              body: ZoneText(users,Myprofil),
-                              // body: MessageController(users,Myprofil),
+                              //body: ZoneText(users,Myprofil),
+                              body: MessageController(Myprofil, users),
                           ); 
                         }));
                       },
