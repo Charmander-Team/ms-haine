@@ -82,10 +82,26 @@ class AllUsersState extends State<AllUsers> {
                                   )
                                 ],
                               ),
-                              body: Column(children: [
-                                MessageController(Myprofil, users),
-                                // ZoneText(users, Myprofil),
-                              ]),
+                              body:
+                              LayoutBuilder(
+                                builder:
+                                    (BuildContext context, BoxConstraints viewportConstraints) {
+                                  return SingleChildScrollView(
+                                    child: ConstrainedBox(
+                                      constraints:
+                                          BoxConstraints(minHeight: viewportConstraints.maxHeight),
+                                      child: Column(children: [
+                                    MessageController(Myprofil, users),
+                                      ]),
+                                    ),
+                                  );
+                                },
+                              ),
+                              
+                              //  Column(children: [
+                              //   MessageController(Myprofil, users),
+                              //   // ZoneText(users, Myprofil),
+                              // ]),
                               bottomNavigationBar: BottomAppBar(
                                 child: ZoneText(users, Myprofil),
                               ));
