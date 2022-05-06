@@ -42,7 +42,7 @@ class MessageControllerState extends State<MessageController> {
               itemBuilder: (BuildContext ctx,int index) {
                 Message discussion = Message(documents[index]);
                 if ((discussion.from == widget.id.uid && discussion.to == widget.idPartner.uid) || (discussion.from == widget.idPartner.uid && discussion.to == widget.id.uid)) {
-                  return messageBubble(widget.id.uid, widget.idPartner, discussion,);
+                  return messageBubble(widget.id.uid, widget.idPartner, discussion);
                 } else {
                   return Container();
                 }
@@ -58,7 +58,8 @@ class MessageControllerState extends State<MessageController> {
 class messageBubble extends StatelessWidget {
 
   Message message;
-  MyProfil partenaire;String monId;
+  MyProfil partenaire;
+  String monId;
   Animation? animation;
 
   messageBubble(@required this.monId, @required this.partenaire, @required this.message, {this.animation});
@@ -87,7 +88,8 @@ class messageBubble extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               color: colorBubble,
               child: Container(
-                padding: EdgeInsets.all(animation?.value),
+                padding: EdgeInsets.all((animation?.value)!=null?animation?.value:6.0),
+                // padding: EdgeInsets.all(animation?.value),
                 child: Text(
                   message.texte,
                   style: TextStyle(color: textcolor),
