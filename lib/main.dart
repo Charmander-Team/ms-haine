@@ -29,13 +29,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'MS Haine',
       theme: ThemeData(
-
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
 
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'MS Haine'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -68,7 +67,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-
+        leading: ClipOval(
+          child: SizedBox.fromSize(
+            size: const Size.fromHeight(80),
+            child: Image.network('https://pbs.twimg.com/profile_images/3141672525/42d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png', fit: BoxFit.cover),
+          ),
+        ),
         title: Text(widget.title),
       ),
       body: Center(
