@@ -215,6 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ));
                         }).catchError((error){
                           print(error);
+                          FirestoreHelper().dialogue(context);
                         });
                       } else {
                         FirestoreHelper().Connexion(mail, password).then((value){
@@ -228,6 +229,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           });
                         }).catchError((error){
                           print(error);
+                          FirestoreHelper().dialogue(context);
                         });
                       }
                     },
