@@ -38,6 +38,8 @@ class MessageControllerState extends State<MessageController> {
           } else {
             List<DocumentSnapshot>documents = snapshot.data!.docs;
             return ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
               itemCount: documents.length,
               itemBuilder: (BuildContext ctx,int index) {
                 Message discussion = Message(documents[index]);

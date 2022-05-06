@@ -52,12 +52,11 @@ class AllUsersState extends State<AllUsers> {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                               return Scaffold(
-                                body: Stack(
-                                  children: [
-                                    MessageController(Myprofil, users),
-
-                                    ZoneText(users, Myprofil),
-                                  ]
+                                body: Column(
+                                children: [
+                                  MessageController(Myprofil, users),
+                                  ZoneText(users, Myprofil),
+                                ]
                                 )
                               );
                             })
