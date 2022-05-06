@@ -30,7 +30,7 @@ class DashboardState extends State<Dashboard>{
                       FirestoreHelper().deconnexion();
                       Navigator.push(context, MaterialPageRoute(
                           builder: (context){
-                            return const MyHomePage(title: "");
+                            return const MyHomePage(title: "MS Haine");
                           }
                       ));
                   },

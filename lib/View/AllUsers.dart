@@ -1,3 +1,6 @@
+import 'package:ms_haine/main.dart';
+import 'package:awesome_icons/awesome_icons.dart';
+import 'package:ms_haine/Fonctions/CustomHelper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:ms_haine/Controller/MessageControler.dart';
 import 'package:ms_haine/Fonctions/FirestoreHelper.dart';
@@ -52,11 +55,33 @@ class AllUsersState extends State<AllUsers> {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                               return Scaffold(
+                                appBar : AppBar(
+                                    leading: CustomHelper().leadingCustomAppBar(),
+                                    title : Text(Myprofil.prenom+" "+Myprofil.nom),
+                                    actions: [
+                                        TextButton.icon(
+                                          onPressed: () {
+                                              FirestoreHelper().deconnexion();
+                                              Navigator.push(context, MaterialPageRoute(
+                                                  builder: (context){
+                                                    return const MyHomePage(title: "MS Haine");
+                                                  }
+                                              ));
+                                          },
+                                          style: TextButton.styleFrom(primary: Colors.white,),
+                                          icon: const Icon(FontAwesomeIcons.arrowCircleRight),
+                                          label: const Text("Deconnexion"),
+                                        )
+                                    ],
+                                ),
                                 body: Column(
                                 children: [
                                   MessageController(Myprofil, users),
-                                  ZoneText(users, Myprofil),
+                                  // ZoneText(users, Myprofil),
                                 ]
+                                ),
+                                bottomNavigationBar: BottomAppBar(
+                                  child: ZoneText(users, Myprofil),
                                 )
                               );
                             })

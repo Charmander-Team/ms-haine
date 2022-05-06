@@ -134,7 +134,7 @@ class ZoneTextState extends State<ZoneText>{
           Flexible(
             child: TextField(
               controller: _textEditingController,
-              decoration: const InputDecoration.collapsed(hintText: "écrivez votre message",),
+              decoration: InputDecoration.collapsed(hintText: "écrivez votre message à ${widget.partenaire.prenom} ${widget.partenaire.nom}"),
               maxLines: null,
             ),
           ),
