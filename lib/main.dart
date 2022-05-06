@@ -57,6 +57,12 @@ class _MyHomePageState extends State<MyHomePage> {
   String prenom ="";
   String nom = "";
   List<bool> selections = [true,false];
+  late bool _passwordVisible;
+
+  @override
+  void initState() {
+    _passwordVisible = false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -165,15 +171,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // Password
           TextField(
-              obscureText : true,
-              decoration : InputDecoration(
+              obscureText: !_passwordVisible,
+              decoration: InputDecoration(
                   icon: const Icon(FontAwesomeIcons.lock),
-                  hintText:"Entrer votre mot de passe",
+                  hintText: "Entrer votre mot de passe",
                   border : OutlineInputBorder(
                       borderRadius : BorderRadius.circular(20)
-                  )
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                      color: Theme.of(context).primaryColorDark,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _passwordVisible = !_passwordVisible;
+                      });
+                    },
+                  ),
               ),
-              onChanged :(String texte){
+              onChanged: (String texte) {
                 setState((){
                   password = texte;
                 });
