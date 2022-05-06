@@ -70,12 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: ClipOval(
-          child: SizedBox.fromSize(
-            size: const Size.fromHeight(80),
-            child: Image.network('https://pbs.twimg.com/profile_images/3141672525/42d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png', fit: BoxFit.cover),
-          ),
-        ),
+        leading: CustomHelper().leadingCustomAppBar(),
         title: Text(widget.title),
       ),
       body: Center(

@@ -1,4 +1,5 @@
 import 'package:awesome_icons/awesome_icons.dart';
+import 'package:ms_haine/Fonctions/CustomHelper.dart';
 import 'package:ms_haine/View/AllUsers.dart';
 import 'package:ms_haine/View/MyUsers.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +22,7 @@ class DashboardState extends State<Dashboard>{
   Widget build(BuildContext context){
     return Scaffold(
         appBar : AppBar(
+            leading: CustomHelper().leadingCustomAppBar(),
             title : const Text("Mon DashBoard"),
             actions: [
                 IconButton(onPressed: (){
