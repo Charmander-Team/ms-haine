@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ms_haine/fonctions/FirestoreHelper.dart';
+import 'package:ms_haine/Fonctions/FirestoreHelper.dart';
 import 'package:ms_haine/model/Message.dart';
 import 'package:ms_haine/model/MyProfil.dart';
 
