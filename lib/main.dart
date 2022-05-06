@@ -25,7 +25,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -43,7 +42,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
-
   final String title;
 
   @override
@@ -51,6 +49,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   //Variables
   String mail = "";
   String password = "";
@@ -60,10 +59,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-
-
-
-
 
     return Scaffold(
       appBar: AppBar(
@@ -76,14 +71,11 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-
         child: Container(
           padding: const EdgeInsets.all(20),
           child: bodyPage(),
         )
-        
       ),
-
     );
 
 
@@ -95,31 +87,28 @@ class _MyHomePageState extends State<MyHomePage> {
         children : [
           ToggleButtons(
               children: const  [
-                 Text("Inscription"),
+                Text("Inscription"),
                 Text("Connexion")
               ],
               isSelected: selections,
-            selectedColor: Colors.red,
-
-            borderRadius: BorderRadius.circular(10),
-            disabledColor: Colors.white,
-           
-            onPressed: (int selected){
+              selectedColor: Colors.orange,
+              borderRadius: BorderRadius.circular(10),
+              disabledColor: Colors.white,
+              onPressed: (int selected){
                 setState(() {
                   selections[selected] = true;
                   if(selected == 0){
                     selections[1] = false;
+                  } else {
+                    selections[0] = false;
                   }
-                  else
-                    {
-                      selections[0] = false;
-                    }
                 });
-            },
+              },
           ),
+
           const SizedBox(height : 40),
 
-          //Prénom
+    //Prénom
           (selections[0])?TextField(
               decoration : InputDecoration(
                   hintText:"Entrer votre prénom",
@@ -136,9 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           const SizedBox(height : 40),
 
-
-          // Nom
-
+    // Nom
           (selections[0])?TextField(
               decoration : InputDecoration(
                   hintText:"Entrer votre nom",
@@ -155,7 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           const SizedBox(height : 40),
 
-          //Le mail
+    // Email
           TextField(
               decoration : InputDecoration(
                   hintText:"Entrer votre adresse mail",
@@ -172,10 +159,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           const SizedBox(height : 40),
 
-
-          //Le mot de passe
-
-
+    // Password
           TextField(
               obscureText : true,
               decoration : InputDecoration(
@@ -190,19 +174,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 });
               }
           ),
+
           const SizedBox(height : 40),
 
-
-          //Bouton cliqubale
-
-
+    // Bouton
           Row(
               mainAxisAlignment : MainAxisAlignment.center,
               children : [
-
                 ElevatedButton(
                     onPressed:(){
-
                       if(selections[0] == true){
                         FirestoreHelper().Inscription(prenom, nom, mail, password).then((value){
                           Navigator.push(context,MaterialPageRoute(
@@ -212,58 +192,30 @@ class _MyHomePageState extends State<MyHomePage> {
                               }
                           ));
                         }).catchError((error){
-
+                          print(error);
+                        });
+                      } else {
+                        FirestoreHelper().Connexion(mail, password).then((value){
+                          setState(() {
+                            Myprofil = value;
+                            Navigator.push(context,MaterialPageRoute(
+                                builder : (context){
+                                  return Dashboard();
+                                }
+                            ));
+                          });
+                        }).catchError((error){
                           print(error);
                         });
                       }
-                      else
-                        {
-                          FirestoreHelper().Connexion(mail, password).then((value){
-                            setState(() {
-
-
-                              Myprofil = value;
-                              Navigator.push(context,MaterialPageRoute(
-                                  builder : (context){
-                                    //return Dashboard(mail : mail,password : password);
-                                    return Dashboard();
-                                  }
-                              ));
-                            });
-                          }).catchError((error){
-                            print(error);
-                          });
-                        }
-                      },
+                    },
                     child : const Text("Validation")
 
                 ),
                 const SizedBox(width : 10),
-
-                /*InkWell(
-                    onTap :() {
-                      print("J'ai appuyer");
-                      Navigator.push(context,MaterialPageRoute(
-                          builder :( context){
-                            return SignIn();
-                          }
-                      ));
-                    },
-                    child: const Text("Inscription")
-
-                ),*/
-
-
               ]
-
           ),
-
-
-
-
         ]
-
     );
   }
-
 }
