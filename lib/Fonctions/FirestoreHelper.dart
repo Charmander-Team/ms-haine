@@ -1,13 +1,13 @@
-
-
+import 'dart:js';
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:ms_haine/model/MyProfil.dart';
 
 class FirestoreHelper {
+
   //Attributs
   final auth = FirebaseAuth.instance;
   final fireUser = FirebaseFirestore.instance.collection("Users");
@@ -110,7 +110,6 @@ class FirestoreHelper {
     //Récupper le lien de l'image
     urlChemin = await download.ref.getDownloadURL();
     return urlChemin;
-
   }
 
 }
