@@ -10,7 +10,6 @@ import 'package:ms_haine/modelView/ImageRond.dart';
 import 'package:flutter/material.dart';
 
 class AllUsers extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
     return AllUsersState();
@@ -18,7 +17,6 @@ class AllUsers extends StatefulWidget {
 }
 
 class AllUsersState extends State<AllUsers> {
-
   @override
   Widget build(BuildContext context) {
     return bodyPage();
@@ -44,7 +42,8 @@ class AllUsersState extends State<AllUsers> {
                       child: Card(
                         elevation: 5.0,
                         color: Colors.amber,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
                         child: ListTile(
                           leading: ImageRond(image: users.image, size: 60),
                           title: Text("${users.prenom} ${users.nom}"),
@@ -54,38 +53,43 @@ class AllUsersState extends State<AllUsers> {
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                              return Scaffold(
-                                appBar : AppBar(
-                                    leading: CustomHelper().leadingCustomAppBar(),
-                                    title : Text(Myprofil.prenom+" "+Myprofil.nom),
-                                    actions: [
-                                        TextButton.icon(
-                                          onPressed: () {
-                                              FirestoreHelper().deconnexion();
-                                              Navigator.push(context, MaterialPageRoute(
-                                                  builder: (context){
-                                                    return const MyHomePage(title: "MS Haine");
-                                                  }
-                                              ));
-                                          },
-                                          style: TextButton.styleFrom(primary: Colors.white,),
-                                          icon: const Icon(FontAwesomeIcons.arrowCircleRight),
-                                          label: const Text("Deconnexion"),
-                                        )
-                                    ],
-                                ),
-                                body: Column(
-                                children: [
-                                  MessageController(Myprofil, users),
-                                  // ZoneText(users, Myprofil),
-                                ]
-                                ),
-                                bottomNavigationBar: BottomAppBar(
-                                  child: ZoneText(users, Myprofil),
-                                )
-                              );
-                            })
-                        );
+                          return Scaffold(
+                              appBar: AppBar(
+                                leading: InkWell(
+                                    child: CustomHelper().leadingCustomAppBar(),
+                                    onTap: () {
+                                      print("coucou");
+                                      Navigator.pop(context);
+                                    }),
+                                title:
+                                    Text(Myprofil.prenom + " " + Myprofil.nom),
+                                actions: [
+                                  TextButton.icon(
+                                    onPressed: () {
+                                      FirestoreHelper().deconnexion();
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context) {
+                                        return const MyHomePage(
+                                            title: "MS Haine");
+                                      }));
+                                    },
+                                    style: TextButton.styleFrom(
+                                      primary: Colors.white,
+                                    ),
+                                    icon: const Icon(
+                                        FontAwesomeIcons.arrowCircleRight),
+                                    label: const Text("Deconnexion"),
+                                  )
+                                ],
+                              ),
+                              body: Column(children: [
+                                MessageController(Myprofil, users),
+                                // ZoneText(users, Myprofil),
+                              ]),
+                              bottomNavigationBar: BottomAppBar(
+                                child: ZoneText(users, Myprofil),
+                              ));
+                        }));
                       },
                     );
                   }
