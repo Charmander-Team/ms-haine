@@ -34,6 +34,15 @@ class MyProfil{
 
 
 //Méthodes
-
+  Map<String,dynamic> toMap()  {
+    Map <String,dynamic> map;
+    return map = {
+      'NOM': nom,
+      'PRENOM': prenom,
+      'IMAGE': image,
+      'MAIL': mail,
+      'NAISSANCE': dateNaissance,
+    };
+  }
 
 }

@@ -13,7 +13,51 @@ class FirestoreHelper {
   final fireUser = FirebaseFirestore.instance.collection("Users");
   final storage = FirebaseStorage.instance;
 
+  final fire_message = FirebaseFirestore.instance.collection("Message");
+  final fire_conversation=FirebaseFirestore.instance.collection('Conversations');
 
+  addMessage(Map<String,dynamic> map,String uid){
+    fire_message.doc(uid).set(map);
+  }
+  addConversation(Map<String,dynamic> map,String uid){
+    fire_conversation.doc(uid).set(map);
+  }
+
+  sendMessage(String texte, MyProfil user, MyProfil moi) {
+    DateTime date = DateTime.now();
+    Map <String, dynamic>map = {
+      'from': moi.uid,
+      'to': user.uid,
+      'texte': texte,
+      'envoiMessage': date
+    };
+
+    String idDate = date.microsecondsSinceEpoch.toString();
+
+    addMessage(map, getMessageRef(moi.uid, user.uid, idDate));
+    addConversation(getConversation(moi.uid, user, texte, date), moi.uid);
+    addConversation(getConversation(user.uid, moi, texte, date), user.uid);
+  }
+
+  Map <String,dynamic> getConversation(String sender,MyProfil partenaire,String texte,DateTime date){
+    Map <String,dynamic> map = partenaire.toMap();
+    map ['idmoi']=sender;
+    map['lastmessage']=texte;
+    map['envoimessage']=date;
+    map['destinateur']=partenaire.uid;
+    return map;
+  }
+
+  String getMessageRef(String from,String to,String date){
+    String resultat="";
+    List<String> liste=[from,to];
+    liste.sort((a,b)=>a.compareTo(b));
+    for(var x in liste){
+      resultat += x+"+";
+    }
+    resultat =resultat + date;
+    return resultat;
+  }
 
   //Méthodes
 

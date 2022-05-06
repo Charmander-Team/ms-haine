@@ -40,12 +40,12 @@ class MessageControllerState extends State<MessageController> {
               itemCount: documents.length,
               itemBuilder: (BuildContext ctx,int index) {
                 Message discussion = Message(documents[index]);
-                if ((discussion.from == widget.id.id &&
-                    discussion.to == widget.idPartner.id) ||
-                    (discussion.from == widget.idPartner.id &&
-                        discussion.to == widget.id.id)) {
+                if ((discussion.from == widget.id.uid &&
+                    discussion.to == widget.idPartner.uid) ||
+                    (discussion.from == widget.idPartner.uid &&
+                        discussion.to == widget.id.uid)) {
                   return messageBubble(
-                    widget.id.id, widget.idPartner, discussion,);
+                    widget.id.uid, widget.idPartner, discussion,);
                 } else {
                   return Container();
                 }
