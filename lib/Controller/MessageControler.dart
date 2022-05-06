@@ -1,13 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+import 'package:ms_haine/fonctions/FirestoreHelper.dart';
 import 'package:ms_haine/model/Message.dart';
 import 'package:ms_haine/model/MyProfil.dart';
 
 class MessageController extends StatefulWidget{
   MyProfil id;
   MyProfil idPartner;
-  MessageController(@required MyProfil this.id,@required MyProfil this.idPartner);
+  MessageController(@required this.id,@required this.idPartner);
   @override
   State<StatefulWidget> createState() {
     return MessageControllerState();
@@ -28,7 +29,7 @@ class MessageControllerState extends State<MessageController> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-        stream: restoreHelper(). re_message.orderBy('envoiMessage',descending: true).snapshots(),
+        stream: FirestoreHelper().fire_message.orderBy('envoiMessage',descending: true).snapshots(),
         builder: (BuildContext context, AsyncSnapshot <QuerySnapshot>snapshot) {
           if (!snapshot.hasData) {
             return const CircularProgressIndicator();
@@ -65,12 +66,12 @@ class messageBubble extends StatelessWidget {
   MyProfil partenaire;String monId;
   Animation? animation;
 
-  messageBubble(@required String this.monId,@required MyProfil this.partenaire,@required Message this.message,{Animation? this.animation});
+  messageBubble(@required this.monId,@required this.partenaire,@required this.message,{this.animation});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: const EdgeInsets.all(10),
       child: Row(
         children: widgetBubble(message.from==monId),
       ),
@@ -112,7 +113,7 @@ class ZoneText extends StatefulWidget {
   MyProfil partenaire;
   MyProfil moi;
 
-  ZoneText(@required MyProfil this.partenaire, @required MyProfil this.moi);
+  ZoneText(@required this.partenaire, @required this.moi);
 
   @override
   State<StatefulWidget> createState() {
@@ -122,7 +123,7 @@ class ZoneText extends StatefulWidget {
 }
 
 
-TextEditingController _textEditingController = new TextEditingController();
+TextEditingController _textEditingController = TextEditingController();
 
 class ZoneTextState extends State<ZoneText>{
 
@@ -148,16 +149,16 @@ class ZoneTextState extends State<ZoneText>{
   }
 
   _sendBouttonpressed() {
-    if(_textEditingController != null && _textEditingController != ""){
+    if(_textEditingController != ""){
       String text=_textEditingController.text;
       print('enregistrement');
-      restoreHelper().sendMessage(text, widget.partenaire,widget.moi);
+      FirestoreHelper().sendMessage(text, widget.partenaire,widget.moi);
 
       setState(() {
         _textEditingController.text='';
       });
 
-      FocusScope.of(context).requestFocus(new FocusNode());
+      FocusScope.of(context).requestFocus(FocusNode());
 
       _sendMessage();
     }

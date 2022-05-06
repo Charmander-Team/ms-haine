@@ -26,7 +26,7 @@ class ImageRondState extends State<ImageRond>{
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(
-          image: (widget.image == null)?const NetworkImage("https://firebasestorage.googleapis.com/v0/b/ms_haineawt.appspot.com/o/noPicture.jpeg?alt=media&token=dc1b7104-4bed-4884-9623-f21da8b1af5c"):NetworkImage(widget.image!),
+          image: (widget.image == null)?const NetworkImage("https://firebasestorage.googleapis.com/v0/b/ms-haine.appspot.com/o/anonyme-300x189.jpg?alt=media&token=78c6f6b7-e16a-4f63-bcf1-8b3a63ad9bfd"):NetworkImage(widget.image!),
           fit: BoxFit.fill
         )
       ),
