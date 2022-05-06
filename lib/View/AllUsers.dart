@@ -41,12 +41,9 @@ class AllUsersState extends State<AllUsers> {
                       child: Card(
                         elevation: 5.0,
                         color: Colors.amber,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                         child: ListTile(
-                          //Image
                           leading: ImageRond(image: users.image, size: 60),
-
                           title: Text("${users.prenom} ${users.nom}"),
                           subtitle: Text(users.mail),
                         ),
@@ -55,11 +52,12 @@ class AllUsersState extends State<AllUsers> {
                         print("coucou");
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                            return Scaffold(
-                              //body: ZoneText(users,Myprofil),
-                              body: MessageController(Myprofil, users),
-                          ); 
-                        }));
+                              return Scaffold(
+                                //body: ZoneText(users,Myprofil),
+                                body: MessageController(Myprofil, users),
+                              );
+                            })
+                        );
                       },
                     );
                   }
