@@ -1,9 +1,9 @@
 import 'package:awesome_icons/awesome_icons.dart';
-import 'package:ms_haine/Fonctions/FirestoreHelper.dart';
 import 'package:ms_haine/View/AllUsers.dart';
 import 'package:ms_haine/View/MyUsers.dart';
-import 'package:ms_haine/main.dart';
 import 'package:flutter/material.dart';
+import 'package:ms_haine/Fonctions/FirestoreHelper.dart';
+import 'package:ms_haine/main.dart';
 
 class Dashboard extends StatefulWidget {
 
