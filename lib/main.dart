@@ -4,6 +4,7 @@ import 'package:ms_haine/View/Dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'library/lib.dart';
+import 'package:awesome_icons/awesome_icons.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -181,8 +182,8 @@ class _MyHomePageState extends State<MyHomePage> {
           Row(
               mainAxisAlignment : MainAxisAlignment.center,
               children : [
-                ElevatedButton(
-                    onPressed:(){
+                ElevatedButton.icon(
+                    onPressed: (){
                       if(selections[0] == true){
                         FirestoreHelper().Inscription(prenom, nom, mail, password).then((value){
                           Navigator.push(context,MaterialPageRoute(
@@ -209,10 +210,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
                       }
                     },
-                    child : const Text("Validation")
-
+                  icon: const Icon(FontAwesomeIcons.check),
+                  label : (selections[0]) ? const Text("S'enregistrer") : const Text("Se connecter"),
                 ),
+
                 const SizedBox(width : 10),
+
               ]
           ),
         ]
