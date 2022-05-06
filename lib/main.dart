@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:ms_haine/Fonctions/FirestoreHelper.dart';
+import 'package:ms_haine/Fonctions/CustomHelper.dart';
 import 'package:ms_haine/View/Dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -215,7 +216,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ));
                         }).catchError((error){
                           print(error);
-                          FirestoreHelper().dialogue(context);
+                          CustomHelper().dialogue(context);
                         });
                       } else {
                         FirestoreHelper().Connexion(mail, password).then((value){
@@ -229,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           });
                         }).catchError((error){
                           print(error);
-                          FirestoreHelper().dialogue(context);
+                          CustomHelper().dialogue(context);
                         });
                       }
                     },
