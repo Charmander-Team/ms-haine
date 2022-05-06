@@ -91,9 +91,8 @@ class messageBubble extends StatelessWidget {
               color: colorBubble,
               child: Container(
                 padding: EdgeInsets.all( (animation?.value != null) ? animation?.value : 6.0 ),
-                // padding: EdgeInsets.all(animation?.value),
                 child: Text(
-                  message.texte,
+                 message.envoiMessage.toString()+":\n"+message.texte,
                   style: TextStyle(color: textcolor),
                 ),
               ),
