@@ -112,6 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
     //Prénom
           (selections[0])?TextField(
               decoration : InputDecoration(
+                  icon: const Icon(FontAwesomeIcons.user),
                   hintText:"Entrer votre prénom",
                   border : OutlineInputBorder(
                       borderRadius : BorderRadius.circular(20)
@@ -129,7 +130,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // Nom
           (selections[0])?TextField(
               decoration : InputDecoration(
-                  hintText:"Entrer votre nom",
+                  icon: const Icon(FontAwesomeIcons.user),
+                  hintText:"Entrer votre nom de famille",
                   border : OutlineInputBorder(
                       borderRadius : BorderRadius.circular(20)
                   )
@@ -146,10 +148,11 @@ class _MyHomePageState extends State<MyHomePage> {
     // Email
           TextField(
               decoration : InputDecoration(
+                  icon: const Icon(FontAwesomeIcons.at),
                   hintText:"Entrer votre adresse mail",
                   border : OutlineInputBorder(
                       borderRadius : BorderRadius.circular(20)
-                  )
+                  ),
               ),
               onChanged :(texte){
                 setState((){
@@ -164,6 +167,7 @@ class _MyHomePageState extends State<MyHomePage> {
           TextField(
               obscureText : true,
               decoration : InputDecoration(
+                  icon: const Icon(FontAwesomeIcons.lock),
                   hintText:"Entrer votre mot de passe",
                   border : OutlineInputBorder(
                       borderRadius : BorderRadius.circular(20)
