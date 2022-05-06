@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "351124660862",
+    "project_id": "ms-haine",
+    "storage_bucket": "ms-haine.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351124660862:android:3e43117e2b5dd759c22e2f",
+        "android_client_info": {
+          "package_name": "com.example.ms_haine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351124660862-66rr8ks1ag165kucpiv7q412eg6uarnm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBRCilLkxLjoaEjpIuG1gxcsnD5Ab8T4s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351124660862-66rr8ks1ag165kucpiv7q412eg6uarnm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

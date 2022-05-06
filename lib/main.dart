@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:ms_haine/Fonctions/FirestoreHelper.dart';
 import 'package:ms_haine/View/Dashboard.dart';
@@ -13,11 +12,11 @@ void main() async {
   } else {
     await Firebase.initializeApp(
         options: const FirebaseOptions(
-          apiKey: "AIzaSyD3fTPz7G4fliw6kBgeqLNwfWTQL8S4sgc",
-          projectId: "musicvitkov-e3832",
-          messagingSenderId: "137037393358",
-          appId: "1:137037393358:web:8b33bac0ffe84579cf0f9f",
-          storageBucket: "musicvitkov-e3832.appspot.com",
+          apiKey: "AIzaSyADNStgpkgQwjo35SiauoyImR9lMjw9Kf0",
+          projectId: "ms-haine",
+          storageBucket: "ms-haine.appspot.com",
+          messagingSenderId: "351124660862",
+          appId: "1:351124660862:web:527da7095abb736ec22e2f"
         ));
   }
   runApp(const MyApp());
