@@ -27,8 +27,15 @@ class CustomHelper {
         ClipOval(
             child: SizedBox.fromSize(
                 size: const Size.fromHeight(80),
-                child: Image.network('https://pbs.twimg.com/profile_images/3141672525/42d0f32a6b76790e8d6f1ad6fcd30dbe_400x400.png', fit: BoxFit.cover),
-            ),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/msn.png'),
+                      fit: BoxFit.cover
+                    )
+                  )
+                ),
+            )
         )
     );
   }
