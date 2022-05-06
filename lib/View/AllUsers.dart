@@ -49,12 +49,16 @@ class AllUsersState extends State<AllUsers> {
                         ),
                       ),
                       onTap: () {
-                        print("coucou");
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                               return Scaffold(
-                                //body: ZoneText(users,Myprofil),
-                                body: MessageController(Myprofil, users),
+                                body: Stack(
+                                  children: [
+                                    MessageController(Myprofil, users),
+
+                                    ZoneText(users, Myprofil),
+                                  ]
+                                )
                               );
                             })
                         );
