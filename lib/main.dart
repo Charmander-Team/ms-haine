@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:ms_haine/Fonctions/FirestoreHelper.dart';
 import 'package:ms_haine/View/Dashboard.dart';
@@ -35,6 +34,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
+
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
       debugShowCheckedModeBanner: false,
     );
